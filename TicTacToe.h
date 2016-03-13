@@ -16,7 +16,10 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <map>
 
+#include "TicTacNode.h"
 using namespace std;
 
 class TicTacToe
@@ -57,6 +60,12 @@ public:
 private:
 	bool m_isOver;
 	int m_results;
+
+	TicTacNode *frontPtr;
+	TicTacNode *rearPtr;
+	TicTacNode *cursorPtr;
+	TicTacNode *insertPtr;
+	TicTacNode *previousPtr;
 
 	
 };

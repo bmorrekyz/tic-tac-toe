@@ -15,6 +15,7 @@
 
 #include <vector>
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -24,12 +25,16 @@ public:
 	TicTacNode();
 	~TicTacNode();
 
-	void addChildNode(TicTacNode*);
+	void addChildNode(TicTacNode *node);
 
+	void addElementToBoard(int index, char element);
+
+	char elementAtIndexOnBoard(int index);
+	friend ostream& operator << (ostream& outStream, TicTacNode& aNode);
 	
 private:
 	vector<TicTacNode*> m_children;
-	//map<>
+	map<int,char> m_board;
 
 };
 #endif

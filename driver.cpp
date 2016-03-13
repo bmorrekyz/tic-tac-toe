@@ -47,6 +47,11 @@ int main(int argc, char const *argv[])
 		TicTacToe myGame;
 		myGame.readGame(fileNames[0]);
 
+		// TicTacNode aNode;
+		// TicTacNode *aNode2 = new TicTacNode;
+		// for (int i=0; i < 3; i++) {
+		// 	aNode.addChildNode(aNode2);
+		// }
 	}
 
 	/* display errors */

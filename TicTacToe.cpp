@@ -14,9 +14,15 @@
 
 #include "TicTacToe.h"
 
+
 TicTacToe::TicTacToe()
 {
-	/* empty constructor body */
+	/* constructor body */
+	frontPtr = NULL;
+	rearPtr = NULL;
+	cursorPtr = NULL;
+	insertPtr = NULL;
+	previousPtr = NULL;
 }
 
 
@@ -27,7 +33,43 @@ TicTacToe::~TicTacToe()
 
 void TicTacToe::readGame(string fileName) 
 {
+	const char *c = fileName.c_str();
+	char line[128];
+
 	cout << "readGame() was called with filename: "<< fileName << endl;
+	ifstream gameFile (c, ifstream::in);
+
+	/*
+	In the code below, I am trying to read through the file while
+	splitting the lines into nodes. 
+	*/
+	while (!gameFile.eof()) 
+	{
+		TicTacNode *aNode = new TicTacNode;
+
+		int index = 0;
+		for (int i=0; i<3; i++) 
+		{
+			gameFile.getline(line,128); 
+			
+			//cout << i << " " << line << endl;  // TESTING
+
+			
+			for (int j=0;j<3; j++)
+			{
+				// cout << "index = " << index << endl;  
+				// cout << "element: " << line[j] << endl;
+				index++;
+				aNode->addElementToBoard(index, line[j]); 	
+			}	
+		}
+		gameFile.getline(line,128);
+		index = 0;		
+
+		cout << *aNode << endl;
+
+		delete aNode;
+	}
 }
 
 bool TicTacToe::gameIsOver() 
