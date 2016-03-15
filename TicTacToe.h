@@ -7,8 +7,8 @@
 ** E-mail:  dsagit1@umbc.edu 
 **
 **   This file contains the interface of the TicTacToe class. 
-** . 
-**
+**  This class will essentially be a linked list of TicTacNodes 
+**	that contains the information about the individual game you just read in.
 ***********************************************/
 
 #ifndef TICTACTOE_H
@@ -18,6 +18,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <list>
 
 #include "TicTacNode.h"
 using namespace std;
@@ -55,18 +56,13 @@ public:
 							2 – Player O won
 							3 – Game ended in a draw 		 
 	*/
- 	int getResult();
+ 	int getResult(); 
 
 private:
 	bool m_isOver;
 	int m_results;
 
-	TicTacNode *frontPtr;
-	TicTacNode *rearPtr;
-	TicTacNode *cursorPtr;
-	TicTacNode *insertPtr;
-	TicTacNode *previousPtr;
+	list<TicTacNode*> m_ticTacList;
 
-	
 };
 #endif

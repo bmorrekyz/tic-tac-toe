@@ -42,3 +42,23 @@ ostream& operator << (ostream& outStream, TicTacNode& aNode)
 	cout << endl;
 	return outStream;
 }
+
+bool TicTacNode::operator ==(TicTacNode& node2) 
+{
+	bool status = true;
+
+	for (int i=0; i<9; i++)
+	{
+		if (m_board[i] != node2.elementAtIndexOnBoard(i))
+		{
+			status = false;
+		}
+	}
+
+	if (status) 
+	{
+		return true;
+	}
+
+	else { return false; }
+}

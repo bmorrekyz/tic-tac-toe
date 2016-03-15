@@ -30,7 +30,10 @@ public:
 	void addElementToBoard(int index, char element);
 
 	char elementAtIndexOnBoard(int index);
+
+	/* overloaded operators */
 	friend ostream& operator << (ostream& outStream, TicTacNode& aNode);
+	bool operator ==(TicTacNode& node2);
 	
 private:
 	vector<TicTacNode*> m_children;

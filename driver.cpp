@@ -40,12 +40,16 @@ int main(int argc, char const *argv[])
 			counter++;
 		}
 
-		/* read each file in fileNames */
+		/* read a file in fileNames */
+		TicTacToe myGame1;
+		myGame1.readGame(fileNames[0]);
 
-		/*  */
+		if (myGame1.gameIsOver())
+			cout << "the game is over" << endl;
 
-		TicTacToe myGame;
-		myGame.readGame(fileNames[0]);
+		else {cout <<"the game is not over" << endl;}
+
+		cout << myGame1.getResult() << endl;
 
 		// TicTacNode aNode;
 		// TicTacNode *aNode2 = new TicTacNode;
