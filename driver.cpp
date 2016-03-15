@@ -9,7 +9,6 @@
 **   This file contains the main driver program for Project 2.
 ** This program reads the file containing the names of the game data files. 
 ** 
-**
 ***********************************************/
 
 #include <iostream>
@@ -42,20 +41,19 @@ int main(int argc, char const *argv[])
 
 		/* read a file in fileNames */
 		TicTacToe myGame1;
-		myGame1.readGame(fileNames[0]);
+		for (int i=0; i < 3; i++)
+		{
+			myGame1.readGame(fileNames[i]);		
 
-		if (myGame1.gameIsOver())
-			cout << "the game is over" << endl;
+			if (myGame1.gameIsOver())
+			{
+				cout << "game is over." << endl;
+			}	
+			else { cout << " ... " << endl; }
+		}
 
-		else {cout <<"the game is not over" << endl;}
 
-		cout << myGame1.getResult() << endl;
 
-		// TicTacNode aNode;
-		// TicTacNode *aNode2 = new TicTacNode;
-		// for (int i=0; i < 3; i++) {
-		// 	aNode.addChildNode(aNode2);
-		// }
 	}
 
 	/* display errors */
@@ -63,12 +61,12 @@ int main(int argc, char const *argv[])
 	{
 		if (argc != 2) cerr << "Error: not enough arguments were passed." << endl;
 		else { cerr << "Error: The input file was not found." << endl; }
-
 	}
 
-
-
-
 	return 0;
-
 }
+
+
+/* TO DO LIST
+	1. get rid of the magin numbers. replace them with constants. 
+*/

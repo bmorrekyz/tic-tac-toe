@@ -19,8 +19,10 @@
 #include <fstream>
 #include <map>
 #include <list>
+#include <vector>
 
 #include "TicTacNode.h"
+
 using namespace std;
 
 class TicTacToe
@@ -30,8 +32,8 @@ public:
 	~TicTacToe();
 
 	/*
-		Description:    readGame 
-		Pre-condition:  a valid input filename
+		Description:     readGame 
+		Pre-condition:   a valid input filename
 	 	Post-condition:  It will parse through the passed in file name, 
 	 						create nodes for each play made in the game, 
 	 						and determine the result of the game once it’s reached the end.
@@ -41,16 +43,16 @@ public:
 	/* getters */
 
 	/*
-		Description:    gameIsOver 
-		Pre-condition:  none
+		Description:     gameIsOver 
+		Pre-condition:   none
 	 	Post-condition:  returns true if the game is over; returns false otherwise. 
 	*/
  	bool gameIsOver();
 
 	/*
-		Description:    getResult 
-		Pre-condition:  none
-	 	Post-condition: returns the following integers
+		Description:     getResult 
+		Pre-condition:   none
+	 	Post-condition:  returns the following integers
 							0 – game did not end
 							1 – Player X won
 							2 – Player O won
