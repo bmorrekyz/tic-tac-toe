@@ -40,11 +40,11 @@ public:
 	void addElementToBoard(int index, char element);
 
 	/*
-		Description:     elementAtIndexOnBoard
+		Description:     getElement
 		Pre-condition:   a valid index of the map container
 	 	Post-condition:  returns a value (char) of the key (int) in a map container.
 	*/	
-	char elementAtIndexOnBoard(int index);
+	char getElement(int index);
 
 	/* ----- overloaded operators ----- */
 

@@ -27,7 +27,7 @@ void TicTacNode::addElementToBoard(int index, char element)
 
 
 // to check the value at a given key on a map
-char TicTacNode::elementAtIndexOnBoard(int index)
+char TicTacNode::getElement(int index)
 {
 	return m_board[index];
 }
@@ -38,7 +38,7 @@ ostream& operator << (ostream& outStream, TicTacNode& aNode)
 	// show each of the elements of m_board variable
 	for (int i=0; i<10; i++)
 	{
-		outStream << aNode.elementAtIndexOnBoard(i);
+		outStream << aNode.getElement(i);
 
 		// necessary for showing m_board as a 3x3 square
 		if (i == 3 || i == 6) 
@@ -64,7 +64,7 @@ bool TicTacNode::operator ==(TicTacNode& node2)
 	for (int i=0; i<9; i++)
 	{	
 		// one false status proves that the nodes are different
-		if (m_board[i] != node2.elementAtIndexOnBoard(i))
+		if (m_board[i] != node2.getElement(i))
 		{
 			status = false;
 		}

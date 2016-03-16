@@ -17,7 +17,7 @@
 
 TicTacToe::TicTacToe()
 {
-	/* empty constructor body */
+	/* constructor body */
 	m_isOver = false;
 	m_results = 0;
 }
@@ -31,9 +31,9 @@ void TicTacToe::readGame(string fileName)
 	const char *c = fileName.c_str();
 	char line[128];
 
-	cout << "======================== " << endl;
+	cout << "======================= " << endl;
 	cout << "Reading: " << fileName << endl; 
-	cout << "======================== " << endl;
+	cout << "======================= " << endl;
 
 	ifstream gameFile (c, ifstream::in);
 
@@ -70,8 +70,8 @@ void TicTacToe::readGame(string fileName)
 
 		// add the nodes to a doubly-linked list
 		m_ticTacList.push_back(aNode);
-
-		// cout << *m_ticTacList.back() << endl;  // TEST
+		
+		cout << *m_ticTacList.back() << endl;  // TEST
 
 		// to prevent a memory leak.
 		delete aNode;
@@ -80,62 +80,58 @@ void TicTacToe::readGame(string fileName)
 
 bool TicTacToe::gameIsOver() 
 {
-	cout << "gameIsOver() was called." << endl;
+	cout << *m_ticTacList.back() << endl;  // TEST
+	
+	// 	check whether the last node in the linked list has a winning map elements. 
+	if (
+		((m_ticTacList.back()->getElement(0) == m_ticTacList.back()->getElement(1)) 
+			&& (m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(2))) || 
 
-	// TicTacNode *tempNode = new TicTacNode;
+		((m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(4)) 
+			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(5))) || 
 
-	// tempNode = m_ticTacList.back();
-	cout << m_ticTacList.back() << endl;  // TEST
+		((m_ticTacList.back()->getElement(6) == m_ticTacList.back()->getElement(7)) 
+			&& (m_ticTacList.back()->getElement(7) == m_ticTacList.back()->getElement(8))) || 
 
-	return true; 
+		((m_ticTacList.back()->getElement(0) == m_ticTacList.back()->getElement(3)) 
+			&& (m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(6))) || 
 
-	// WRONG AGAIN!!!
-	// if (((tempNode->elementAtIndexOnBoard(0)) == (tempNode->elementAtIndexOnBoard(1)) == (tempNode->elementAtIndexOnBoard(2))) ||
-	// 	(tempNode->elementAtIndexOnBoard(3) == tempNode->elementAtIndexOnBoard(4) == tempNode->elementAtIndexOnBoard(5)) ||
-	// 	(tempNode->elementAtIndexOnBoard(6) == tempNode->elementAtIndexOnBoard(7) == tempNode->elementAtIndexOnBoard(8)) ||
-		// (tempNode->elementAtIndexOnBoard(0) == tempNode->elementAtIndexOnBoard(3) == tempNode->elementAtIndexOnBoard(6)) ||
-		// (tempNode->elementAtIndexOnBoard(1) == tempNode->elementAtIndexOnBoard(4) == tempNode->elementAtIndexOnBoard(7)) ||
-		// (tempNode->elementAtIndexOnBoard(2) == tempNode->elementAtIndexOnBoard(5) == tempNode->elementAtIndexOnBoard(8)))
+		((m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(4)) 
+			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(7))) || 
 
-	// if ((tempNode->elementAtIndexOnBoard(0) == tempNode->elementAtIndexOnBoard(3)) &&
-	//  	(tempNode->elementAtIndexOnBoard(3) == tempNode->elementAtIndexOnBoard(6)))
-	// {
-	// 	cout << "winning combo found. m_isOver is set to true. " << endl; // TEST
-	// 	m_isOver = true;
+		((m_ticTacList.back()->getElement(2) == m_ticTacList.back()->getElement(5)) 
+			&& (m_ticTacList.back()->getElement(5) == m_ticTacList.back()->getElement(8)))
 
-	// 	cout << *m_ticTacList.back() << endl;  // TEST
-	// 	// cout << *tempNode << endl;
-	// 	return m_isOver;	
-	// }
-	// else
-	// {
-	// 	return m_isOver;
-	// }
-
-
-	// 	WRONG !!!
-	if ((m_ticTacList.back()->elementAtIndexOnBoard(0) == m_ticTacList.back()->elementAtIndexOnBoard(1) == m_ticTacList.back()->elementAtIndexOnBoard(2)) ||
-		(m_ticTacList.back()->elementAtIndexOnBoard(3) == m_ticTacList.back()->elementAtIndexOnBoard(4) == m_ticTacList.back()->elementAtIndexOnBoard(5)) ||
-		(m_ticTacList.back()->elementAtIndexOnBoard(6) == m_ticTacList.back()->elementAtIndexOnBoard(7) == m_ticTacList.back()->elementAtIndexOnBoard(8)) ||
-		(m_ticTacList.back()->elementAtIndexOnBoard(0) == m_ticTacList.back()->elementAtIndexOnBoard(3) == m_ticTacList.back()->elementAtIndexOnBoard(6)) ||
-		(m_ticTacList.back()->elementAtIndexOnBoard(1) == m_ticTacList.back()->elementAtIndexOnBoard(4) == m_ticTacList.back()->elementAtIndexOnBoard(7)) ||
-		(m_ticTacList.back()->elementAtIndexOnBoard(2) == m_ticTacList.back()->elementAtIndexOnBoard(5) == m_ticTacList.back()->elementAtIndexOnBoard(8)))
+		)
 	{
-		cout << "winning combo found. game is over. " << endl; // TEST
 		m_isOver = true;
 		return m_isOver;	
 	}
+
 	else
 	{
 		return m_isOver;
 	}
 	
+
 }
 
 int TicTacToe::getResult() 
 {
 	cout << "getResult() was called. it returned 0 " << endl;
+	// cout << "dbg0: " << m_ticTacList.back()->getElement(0) << endl;  // TEST
+	// cout << "dbg1: " << m_ticTacList.back()->getElement(1) << endl;  // TEST
+	// cout << "dbg2: " << m_ticTacList.back()->getElement(2) << endl;  // TEST
+	// cout << "dbg3: " << m_ticTacList.back()->getElement(3) << endl;  // TEST
+	// cout << "dbg4: " << m_ticTacList.back()->getElement(4) << endl;  // TEST
+
+	// if (m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(4))
+	// {
+	// 	cout << "3 == 4" << endl;
+	// }
 	return 0;
+
+
 }
 
 

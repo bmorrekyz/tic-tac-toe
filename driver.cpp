@@ -43,13 +43,15 @@ int main(int argc, char const *argv[])
 		TicTacToe myGame1;
 		for (int i=0; i < 3; i++)
 		{
-			myGame1.readGame(fileNames[i]);		
+			myGame1.readGame(fileNames[i]);	
+			// myGame1.getResult();	
+			myGame1.gameIsOver();
 
-			if (myGame1.gameIsOver())
-			{
-				cout << "game is over." << endl;
-			}	
-			else { cout << " ... " << endl; }
+			// if (myGame1.gameIsOver())
+			// {
+			// 	cout << "game is over." << endl;
+			// }	
+			// else { cout << " ... " << endl; }
 		}
 
 
