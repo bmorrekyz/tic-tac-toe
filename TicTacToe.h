@@ -60,6 +60,14 @@ public:
 	*/
  	int getResult(); 
 
+ 	/* ---------------HELPER METHODS ------------------ */
+	/*
+		Description:     getLastNode 
+		Pre-condition:   none
+	 	Post-condition:  prints the last node in the TicTacToe game. 
+	*/
+ 	void printLastNode();
+
 private:
 	bool m_isOver;
 	int m_results;

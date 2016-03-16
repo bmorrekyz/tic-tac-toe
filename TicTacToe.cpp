@@ -44,12 +44,13 @@ void TicTacToe::readGame(string fileName)
 	while (!gameFile.eof()) 
 	{
 		TicTacNode *aNode = new TicTacNode;
-
 		int index = 0;       // position on m_board
 		
 		// outer for loop for lines
 		for (int i = 0; i < 3; i++) 
 		{
+
+
 			gameFile.getline(line,128); 
 			
 			// inner for loop for characters on each line
@@ -67,19 +68,17 @@ void TicTacToe::readGame(string fileName)
 		index = 0;		
 
 		// add the nodes to a doubly-linked list
-		m_ticTacList.push_back(aNode);
-		
-		cout << *m_ticTacList.back() << endl;  // TEST
+		m_ticTacList.push_back(aNode);		
 
-		delete aNode;
 	}
+
+	this->gameIsOver();
 }
 
+// 	checks whether the last node in the linked list has a winning map elements. 
 bool TicTacToe::gameIsOver() 
 {
-	cout << *m_ticTacList.back() << endl;  // TEST
-	
-	// 	check whether the last node in the linked list has a winning map elements. 
+	// horizontal win. row 1
 	if (
 		((m_ticTacList.back()->getElement(0) == m_ticTacList.back()->getElement(1)) 
 			&& (m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(2)))
@@ -94,6 +93,7 @@ bool TicTacToe::gameIsOver()
 		return m_isOver;	
 	}
 
+	// horizontal win. row 2
 	else if (
 		((m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(4)) 
 			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(5)))
@@ -108,6 +108,7 @@ bool TicTacToe::gameIsOver()
 		return m_isOver;	
 	}
 
+	// horizontal win. row 3
 	else if (
 		((m_ticTacList.back()->getElement(6) == m_ticTacList.back()->getElement(7)) 
 			&& (m_ticTacList.back()->getElement(7) == m_ticTacList.back()->getElement(8)))
@@ -122,6 +123,7 @@ bool TicTacToe::gameIsOver()
 		return m_isOver;	
 	}
 
+	// vertical win. column 1
 	else if (
 		((m_ticTacList.back()->getElement(0) == m_ticTacList.back()->getElement(3)) 
 			&& (m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(6)))
@@ -136,6 +138,7 @@ bool TicTacToe::gameIsOver()
 		return m_isOver;	
 	}
 
+	// vertical win. column 2
 	else if (
 		((m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(4)) 
 			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(7))) 
@@ -150,6 +153,7 @@ bool TicTacToe::gameIsOver()
 		return m_isOver;	
 	}
 
+	// vertical win. column 3
 	else if 
 	(
 		((m_ticTacList.back()->getElement(2) == m_ticTacList.back()->getElement(5)) 
@@ -183,8 +187,11 @@ bool TicTacToe::gameIsOver()
 
 		return m_isOver;
 	}
+
+	// none of the above
 	else
-	{
+	{	
+		m_results = 0;
 		return m_isOver;
 	}
 }
@@ -194,17 +201,12 @@ int TicTacToe::getResult()
 	return m_results;
 }
 
+void TicTacToe::printLastNode()
+{
+	cout << *m_ticTacList.back() << endl;
+}
 
 /* TO DO LIST
 	1. get rid of the magic numbers. replace them with constants. 
-	2. finish gameIsOver()
+
 */
-
-
-
-
-
-
-
-
-

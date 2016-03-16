@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
 	if (argc == 2 && inFile.is_open()) 
 	{
 
-		/* get the game file names. WORKS. */
+		/* get the game file names. */
 		int counter = 0;
 		while (!inFile.eof()) 
 		{
@@ -40,16 +40,27 @@ int main(int argc, char const *argv[])
 		}
 
 		/* read a file in fileNames */
-		
 		for (int i=0; i < 3; i++)
 		{
 			TicTacToe myGame1;
 
 			myGame1.readGame(fileNames[i]);	
 
-			myGame1.gameIsOver();
+			if (myGame1.getResult() == 1) {
+				cout << "Player X wins!" << endl;
+				myGame1.printLastNode();
+			}
 
-			cout << "game result: " << myGame1.getResult() << endl;
+			else if (myGame1.getResult() == 2) {
+				cout << "Player O wins!" << endl;
+				myGame1.printLastNode();
+			}			
+
+			else if (myGame1.getResult() == 3) {
+				cout << "The game was a draw!" << endl;
+				cout << "Game Board: " << endl;
+				myGame1.printLastNode();
+			}
 		}
 
 
