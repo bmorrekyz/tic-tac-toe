@@ -45,9 +45,7 @@ void TicTacToe::readGame(string fileName)
 	{
 		TicTacNode *aNode = new TicTacNode;
 
-		
-	
-		int index = 0;       // track position on m_board
+		int index = 0;       // position on m_board
 		
 		// outer for loop for lines
 		for (int i = 0; i < 3; i++) 
@@ -73,7 +71,6 @@ void TicTacToe::readGame(string fileName)
 		
 		cout << *m_ticTacList.back() << endl;  // TEST
 
-		// to prevent a memory leak.
 		delete aNode;
 	}
 }
@@ -85,60 +82,129 @@ bool TicTacToe::gameIsOver()
 	// 	check whether the last node in the linked list has a winning map elements. 
 	if (
 		((m_ticTacList.back()->getElement(0) == m_ticTacList.back()->getElement(1)) 
-			&& (m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(2))) || 
-
-		((m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(4)) 
-			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(5))) || 
-
-		((m_ticTacList.back()->getElement(6) == m_ticTacList.back()->getElement(7)) 
-			&& (m_ticTacList.back()->getElement(7) == m_ticTacList.back()->getElement(8))) || 
-
-		((m_ticTacList.back()->getElement(0) == m_ticTacList.back()->getElement(3)) 
-			&& (m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(6))) || 
-
-		((m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(4)) 
-			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(7))) || 
-
-		((m_ticTacList.back()->getElement(2) == m_ticTacList.back()->getElement(5)) 
-			&& (m_ticTacList.back()->getElement(5) == m_ticTacList.back()->getElement(8)))
-
+			&& (m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(2)))
 		)
 	{
+		// check which player won the game 
+		if (m_ticTacList.back()->getElement(0) == 'X') { m_results = 1; }
+		else if (m_ticTacList.back()->getElement(0) == 'O') { m_results = 2; }
+
 		m_isOver = true;
+
 		return m_isOver;	
 	}
 
+	else if (
+		((m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(4)) 
+			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(5)))
+		)
+	{
+		// check which player won the game 
+		if (m_ticTacList.back()->getElement(3) == 'X') { m_results = 1; }
+		else if (m_ticTacList.back()->getElement(3) == 'O') { m_results = 2; }
+
+		m_isOver = true;
+		
+		return m_isOver;	
+	}
+
+	else if (
+		((m_ticTacList.back()->getElement(6) == m_ticTacList.back()->getElement(7)) 
+			&& (m_ticTacList.back()->getElement(7) == m_ticTacList.back()->getElement(8)))
+		)
+	{
+		// check which player won the game 
+		if (m_ticTacList.back()->getElement(6) == 'X') { m_results = 1; }
+		else if (m_ticTacList.back()->getElement(6) == 'O') { m_results = 2; }
+
+		m_isOver = true;
+		
+		return m_isOver;	
+	}
+
+	else if (
+		((m_ticTacList.back()->getElement(0) == m_ticTacList.back()->getElement(3)) 
+			&& (m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(6)))
+		)
+	{
+		// check which player won the game 
+		if (m_ticTacList.back()->getElement(0) == 'X') { m_results = 1; }
+		else if (m_ticTacList.back()->getElement(0) == 'O') { m_results = 2; }
+
+		m_isOver = true;
+		
+		return m_isOver;	
+	}
+
+	else if (
+		((m_ticTacList.back()->getElement(1) == m_ticTacList.back()->getElement(4)) 
+			&& (m_ticTacList.back()->getElement(4) == m_ticTacList.back()->getElement(7))) 
+		)
+	{
+		// check which player won the game 
+		if (m_ticTacList.back()->getElement(1) == 'X') { m_results = 1; }
+		else if (m_ticTacList.back()->getElement(1) == 'O') { m_results = 2; }
+
+		m_isOver = true;
+		
+		return m_isOver;	
+	}
+
+	else if 
+	(
+		((m_ticTacList.back()->getElement(2) == m_ticTacList.back()->getElement(5)) 
+		&& (m_ticTacList.back()->getElement(5) == m_ticTacList.back()->getElement(8)))
+	)
+	{
+		// check which player won the game 
+		if (m_ticTacList.back()->getElement(2) == 'X') { m_results = 1; }
+		else if (m_ticTacList.back()->getElement(2) == 'O') { m_results = 2; }
+
+		m_isOver = true;
+		
+		return m_isOver;	
+	}
+
+	// check for a draw 
+	else if ( 
+			(m_ticTacList.back()->getElement(0) != '-') &&
+			(m_ticTacList.back()->getElement(1) != '-') &&
+			(m_ticTacList.back()->getElement(2) != '-') &&
+			(m_ticTacList.back()->getElement(3) != '-') &&
+			(m_ticTacList.back()->getElement(4) != '-') &&
+			(m_ticTacList.back()->getElement(5) != '-') &&
+			(m_ticTacList.back()->getElement(6) != '-') &&
+			(m_ticTacList.back()->getElement(7) != '-') &&
+			(m_ticTacList.back()->getElement(8) != '-')
+			)
+	{
+		m_isOver = true;
+		m_results = 3;
+
+		return m_isOver;
+	}
 	else
 	{
 		return m_isOver;
 	}
-	
-
 }
 
 int TicTacToe::getResult() 
 {
-	cout << "getResult() was called. it returned 0 " << endl;
-	// cout << "dbg0: " << m_ticTacList.back()->getElement(0) << endl;  // TEST
-	// cout << "dbg1: " << m_ticTacList.back()->getElement(1) << endl;  // TEST
-	// cout << "dbg2: " << m_ticTacList.back()->getElement(2) << endl;  // TEST
-	// cout << "dbg3: " << m_ticTacList.back()->getElement(3) << endl;  // TEST
-	// cout << "dbg4: " << m_ticTacList.back()->getElement(4) << endl;  // TEST
-
-	// if (m_ticTacList.back()->getElement(3) == m_ticTacList.back()->getElement(4))
-	// {
-	// 	cout << "3 == 4" << endl;
-	// }
-	return 0;
-
-
+	return m_results;
 }
 
 
 /* TO DO LIST
 	1. get rid of the magic numbers. replace them with constants. 
 	2. finish gameIsOver()
-	3. finish getResult()
-
-	4. think whether should constructor initialize any variables
 */
+
+
+
+
+
+
+
+
+
