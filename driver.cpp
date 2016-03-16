@@ -17,6 +17,8 @@
 
 #include "TicTacNode.h"
 #include "TicTacToe.h"
+#include "TicTacTrie.h"
+
 using namespace std;
 
 int main(int argc, char const *argv[])
