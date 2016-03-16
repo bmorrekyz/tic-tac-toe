@@ -50,11 +50,13 @@ int main(int argc, char const *argv[])
 
 			if (myGame1.getResult() == 1) {
 				cout << "Player X wins!" << endl;
+				cout << "Game Board: " << endl;
 				myGame1.printLastNode();
 			}
 
 			else if (myGame1.getResult() == 2) {
 				cout << "Player O wins!" << endl;
+				cout << "Game Board: " << endl;
 				myGame1.printLastNode();
 			}			
 
@@ -66,7 +68,8 @@ int main(int argc, char const *argv[])
 		}
 
 
-
+		cout << "Final Trie Statistics" << endl;
+		cout << "=====================" << endl;
 	}
 
 	/* display errors */
